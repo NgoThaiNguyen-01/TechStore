@@ -1,0 +1,37 @@
+/* register.css — TechStore Register Page */
+
+/* Glow blobs */
+@keyframes blob {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(25px, -35px) scale(1.06);
+    }
+
+    66% {
+        transform: translate(-18px, 18px) scale(0.96);
+    }
+}
+
+.animate-blob {
+    animation: blob 9s infinite ease-in-out;
+}
+
+.animation-delay-3000 {
+    animation-delay: 3s;
+}
+
+/* Password strength bar transition */
+.strength-bar {
+    transition: background-color 0.4s ease, width 0.4s ease;
+}
+
+/* Hide browser default password eye */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
