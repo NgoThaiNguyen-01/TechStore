@@ -1,0 +1,31 @@
+{
+  "name": "tech-store",
+  "version": "1.0.0",
+  "description": "A full-stack e-commerce platform built with React, Node.js, and MongoDB. This project features a robust consumer interface and a comprehensive admin dashboard for managing products, orders, users, and more.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "concurrently \"npm run build:backend\" \"npm run build:frontend\"",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "install:all": "npm install && cd backend && npm install && cd .. && cd frontend && npm install",
+    "seed": "cd backend && npm run seed:rbac && npm run seed:admins"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NgoThaiNguyen-01/TechStore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/NgoThaiNguyen-01/TechStore/issues"
+  },
+  "homepage": "https://github.com/NgoThaiNguyen-01/TechStore#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

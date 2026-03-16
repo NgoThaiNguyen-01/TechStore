@@ -606,22 +606,6 @@ export default function Wishlist({ lang, setLang, onNavigateHome, onNavigateProd
                                                         )}
                                                     </div>
 
-                                                    <div className="grid grid-cols-1 gap-2 pt-4 mt-auto">
-                                                        {product.stock > 0 ? (
-                                                            <button 
-                                                                onClick={() => handleAddToCart(product)}
-                                                                className="w-full bg-primary text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors"
-                                                            >
-                                                                <span className="material-symbols-outlined text-xl">shopping_bag</span>
-                                                                {t.buyNow}
-                                                            </button>
-                                                        ) : (
-                                                            <button className="w-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all">
-                                                                <span className="material-symbols-outlined text-lg">notifications</span>
-                                                                {t.notifyMe}
-                                                            </button>
-                                                        )}
-                                                    </div>
                                                 </div>
                                             </div>
                                         );

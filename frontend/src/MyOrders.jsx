@@ -277,7 +277,7 @@ const getRefundDeadline = (order) => {
 const canCreateAftersalesRequest = (order) => {
     if (order?.status !== "completed") return false;
     if (!["paid", "refunded"].includes(order?.paymentStatus)) return false;
-    if (!["none", "rejected", "completed"].includes(getAftersalesStatus(order))) return false;
+    if (!["none", "rejected"].includes(getAftersalesStatus(order))) return false;
 
     const deadline = getRefundDeadline(order);
     return Number.isFinite(deadline) && deadline > Date.now();

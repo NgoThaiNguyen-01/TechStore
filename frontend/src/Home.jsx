@@ -482,7 +482,15 @@ export default function Home({ lang, setLang, onNavigateLogin, onNavigateAdmin, 
     const [publicCoupons, setPublicCoupons] = useState([]);
     const [notificationOpen, setNotificationOpen] = useState(false);
     const [notificationLoading, setNotificationLoading] = useState(false);
-    const [seenNotificationIds, setSeenNotificationIds] = useState([]);
+    const [seenNotificationIds, setSeenNotificationIds] = useState(() => {
+        try {
+            const stored = localStorage.getItem("user");
+            const user = stored ? JSON.parse(stored) : null;
+            return readSeenNotificationIds(user);
+        } catch {
+            return [];
+        }
+    });
     const notificationRef = useRef(null);
     const flashSaleSectionRef = useRef(null);
     const [searchQuery, setSearchQuery] = useState("");
@@ -564,7 +572,8 @@ export default function Home({ lang, setLang, onNavigateLogin, onNavigateAdmin, 
     };
 
     useEffect(() => {
-        setSeenNotificationIds(readSeenNotificationIds(currentUser));
+        const seen = readSeenNotificationIds(currentUser);
+        setSeenNotificationIds(seen);
         if (!currentUser) {
             setNotificationOpen(false);
             setPublicCoupons([]);
@@ -1333,7 +1342,8 @@ export default function Home({ lang, setLang, onNavigateLogin, onNavigateAdmin, 
             });
         });
 
-        return items.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        return items
+            .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
     }, [
         orderNotifications,
         notificationText,
